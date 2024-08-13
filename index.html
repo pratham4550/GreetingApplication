@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title> Greeting App </title>
+<style>
+		*{font-size:70px;font-family:cambria;}
+		body{background-color:azure;}
+</style>
+
+	</head>
+
+	<body>
+		<center>
+			<h1>Greeting App</h1>
+			<form onSubmit="greet()">
+				<input type="text" id="name" placeholder="Enter a name: "/>
+				<br/><br/>
+				<input type="submit"/>
+			</form>
+			<h2 id="msg"/>
+				<script>
+					function greet(){
+					event.preventDefault();
+					let name=document.getElementById("name");
+					let msg=document.getElementById("msg");
+
+					if (name.value===""){
+					alert("Name Cannot Be Empty. ")
+					msg.innerHTML="";
+					name.focus();
+					return;	
+						}
+					if (name.value.trim()===""){
+					alert("Name Cannot Be Blank. ")
+					msg.innerHTML="";
+					name.value="";
+					name.focus();
+					return;	
+					}
+
+					if (!name.value.match(/^[A-Za-z ]+$/)){
+					alert("Name Should Contains only Alphabets. ")
+					msg.innerHTML="";
+					name.value="";
+					name.focus();
+					return;	
+						}
+						let n= name.value;
+						let d=new Date();
+						let h=d.getHours();
+						let a="";
+						if(h<12)
+							a="Good Morning "+n;
+						else if(h<16)
+							a="Good Afternoon "+n;
+						else
+							a="Good Evening "+n;
+						msg.innerHTML=a;
+					}
+				</script>
+		</center>
+	</body>
+</html>
